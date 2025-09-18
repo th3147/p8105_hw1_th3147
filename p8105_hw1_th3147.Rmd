@@ -18,25 +18,25 @@ data("early_january_weather")
   
     *year, month, day, hour (int): Time of recording.
   
-    *temp (num): Temperature in degrees Fahrenheit.
+    *temp (num): Temperature in degrees Fahrenheit. The values range from 24.08 to 57.92.
   
-    *dewp (num): Dew point in degrees Fahrenheit.
+    *dewp (num): Dew point in degrees Fahrenheit. The values range from 8.96 to 53.06.
   
-    *humid (num): Relative humidity in %.
+    *humid (num): Relative humidity in %. The values range from 32.86 to 100.0.
   
-    *wind_dir (num): Wind direction in degrees.
+    *wind_dir (num): Wind direction in degrees. The values range from 0 to 360. 
   
-    *wind_speed (num): Wind speed (mph).
+    *wind_speed (num): Wind speed (mph). The values range from 0.00 to 24.17.
   
-    *wind_gust (num): Wind gust speed (mph).
+    *wind_gust (num): Wind gust speed (mph). The values range from 16.11 to 31.07.
   
-    *precip (num): Precipitation in inches.
+    *precip (num): Precipitation in inches. The values range from 0.00 to 0.19.
   
-    *pressure (num): Sea level pressure in millibars.
+    *pressure (num): Sea level pressure in millibars. The values range from 1010.8 to 1034.4.
   
-    *visib (num): Visibility in miles.
+    *visib (num): Visibility in miles. The values range from 0.12 to 10.
   
-    *time_hour (POSIXct): Date and hour of the recording.
+    *time_hour (POSIXct): Date and hour of the recording. The values range from 2013-01-01 01:00:00 to 2013-01-15 23:00:00.
 
 2. 358 nrow and 15 ncol.
 
@@ -127,4 +127,5 @@ as.numeric(pull(my_table, Factorvec))
 4. Does this help explain what happens when you try to take the mean?
 
     *Yes. it explains why the Charavec and Factorvec cannot calculate the mean value. The reason is that the character vector couldn't be converted to numbers. For the factor vector (Factorvec), the conversion to numbers worked, but it returned the internal level codes (1, 2, 3), not a meaningful numerical representation of the data. 
+
 
