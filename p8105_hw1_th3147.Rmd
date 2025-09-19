@@ -65,7 +65,7 @@ ggsave("scatter_plot.pdf", height = 4, width = 6)
     
     1. Temperature increases over time
     
-    2. As time progresses and the temperature generally rises, the humidity levels also tend to increase.
+    2. As time progresses, the humidity levels also tend to increase.
     
     3. The data indicates that temperatures rise and fall throughout each 24-hour cycle.
 
