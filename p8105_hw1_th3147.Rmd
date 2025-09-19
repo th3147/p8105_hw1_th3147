@@ -38,7 +38,7 @@ data("early_january_weather")
   
     *time_hour (POSIXct): Date and hour of the recording. The values range from 2013-01-01 01:00:00 to 2013-01-15 23:00:00.
 
-2. 358 nrow and 15 ncol.
+2. The data includes `r nrow(early_january_weather)` nrow and `r ncol(early_january_weather)` ncol.
 
 3. The mean is `r mean(early_january_weather$temp)`.
 
