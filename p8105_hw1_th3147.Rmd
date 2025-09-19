@@ -111,7 +111,7 @@ mean(pull(my_table, Factorvec))
 
 3. Convert the variable
 
-```{r message = FALSE}
+```{r results = 'hide', warning = FALSE}
 as.numeric(pull(my_table, greaterzero))
 as.numeric(pull(my_table, Charavec))
 as.numeric(pull(my_table, Factorvec))
