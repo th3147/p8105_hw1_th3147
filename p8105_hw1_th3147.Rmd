@@ -53,9 +53,9 @@ early_january_weather$time_hour <- gsub("一月", "1", early_january_weather$tim
 ggplot(early_january_weather, aes(x = time_hour, y = temp, color = humid)) +
   geom_point() +
   labs(
-    x = "Time (hourly, January 2013)",
-    y = "Temperature (°F)",
-    color = "Humidity (%)",
+    x = "Time_hour (January)",
+    y = "Temp (°F)",
+    color = "Humid (%)",
     title = "Temperature vs Time (colored by Humidity)"
   )
 
@@ -103,13 +103,13 @@ mean(pull(my_table, Charavec))
 mean(pull(my_table, Factorvec))
 ```
 
-      * NormalSample will work because this variable is a numeric vector.
+* NormalSample will work because this variable is a numeric vector.
   
-      * greaterzero will work because R treats TRUE and FALSE as 1 and 0.
+* greaterzero will work because R treats TRUE and FALSE as 1 and 0.
   
-      * Charavec will not work because it is a character vector.
+* Charavec will not work because it is a character vector.
   
-      * Factorvec will not work because it is a factor vector.
+* Factorvec will not work because it is a factor vector.
 
 3. Convert the variable
 
