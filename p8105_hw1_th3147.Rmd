@@ -1,5 +1,6 @@
 ---
 title: "p8105_hw1_th3147"
+author: Te-Hsuan Huang
 output: github_document
 date: "2025-09-17"
 ---
@@ -14,29 +15,29 @@ data("early_january_weather")
 
 1. Variables
 
-    *origin (chr): Airport code (all "EWR").
+    * origin (chr): Airport code (all "EWR").
   
-    *year, month, day, hour (int): Time of recording.
+    * year, month, day, hour (int): Time of recording.
   
-    *temp (num): Temperature in degrees Fahrenheit. The values range from 24.08 to 57.92.
+    * temp (num): Temperature in degrees Fahrenheit. The values range from 24.08 to 57.92.
   
-    *dewp (num): Dew point in degrees Fahrenheit. The values range from 8.96 to 53.06.
+    * dewp (num): Dew point in degrees Fahrenheit. The values range from 8.96 to 53.06.
   
-    *humid (num): Relative humidity in %. The values range from 32.86 to 100.0.
+    * humid (num): Relative humidity in %. The values range from 32.86 to 100.0.
   
-    *wind_dir (num): Wind direction in degrees. The values range from 0 to 360. 
+    * wind_dir (num): Wind direction in degrees. The values range from 0 to 360. 
   
-    *wind_speed (num): Wind speed (mph). The values range from 0.00 to 24.17.
+    * wind_speed (num): Wind speed (mph). The values range from 0.00 to 24.17.
   
-    *wind_gust (num): Wind gust speed (mph). The values range from 16.11 to 31.07.
+    * wind_gust (num): Wind gust speed (mph). The values range from 16.11 to 31.07.
   
-    *precip (num): Precipitation in inches. The values range from 0.00 to 0.19.
+    * precip (num): Precipitation in inches. The values range from 0.00 to 0.19.
   
-    *pressure (num): Sea level pressure in millibars. The values range from 1010.8 to 1034.4.
+    * pressure (num): Sea level pressure in millibars. The values range from 1010.8 to 1034.4.
   
-    *visib (num): Visibility in miles. The values range from 0.12 to 10.
+    * visib (num): Visibility in miles. The values range from 0.12 to 10.
   
-    *time_hour (POSIXct): Date and hour of the recording. The values range from 2013-01-01 01:00:00 to 2013-01-15 23:00:00.
+    * time_hour (POSIXct): Date and hour of the recording. The values range from 2013-01-01 01:00:00 to 2013-01-15 23:00:00.
 
 2. The data includes `r nrow(early_january_weather)` nrow and `r ncol(early_january_weather)` ncol.
 
@@ -61,9 +62,9 @@ ggplot(early_january_weather, aes(x = time_hour, y = temp, color = humid)) +
 ggsave("scatter_plot.pdf", height = 4, width = 6)
 ```
 
-    *Describe patterns:
+    * Describe patterns:
     
-    1. Temperature increases over time
+    1. Temperature increases over time.
     
     2. As time progresses, the humidity levels also tend to increase.
     
@@ -74,6 +75,8 @@ ggsave("scatter_plot.pdf", height = 4, width = 6)
 1. Create a table
 ```{r message = FALSE}
 library(tidyverse)
+
+set.seed(1234)
 
 my_table <- tibble(
   
@@ -100,14 +103,13 @@ mean(pull(my_table, Charavec))
 mean(pull(my_table, Factorvec))
 ```
 
-      *NormalSample will work because this variable is a numeric vector.
+      * NormalSample will work because this variable is a numeric vector.
   
-      *greaterzero will work because R treats TRUE and FALSE as 1 and 0.
+      * greaterzero will work because R treats TRUE and FALSE as 1 and 0.
   
-      *Charavec will not work because it is a character vector.
+      * Charavec will not work because it is a character vector.
   
-      *Factorvec will not work because it is a factor vector.
-
+      * Factorvec will not work because it is a factor vector.
 
 3. Convert the variable
 
@@ -116,16 +118,11 @@ as.numeric(pull(my_table, greaterzero))
 as.numeric(pull(my_table, Charavec))
 as.numeric(pull(my_table, Factorvec))
 ```
+4. What happens, and why? Does this help explain what happens when you try to take the mean?
 
-      *Regarding greaterzero, When you convert the logical vector to numeric, it works perfectly. TRUE values are converted to 1 and FALSE values are converted to 0. 
+      * Regarding greaterzero, when you convert the logical vector to numeric, it works perfectly. TRUE values are converted to 1 and FALSE values are converted to 0. That's same as R software dfault. This results explain why we can get the mean values.
   
-      *Regarding Charavec, it fails to convert since our character vector contains words and not numerical characters.
+      * Regarding Charavec, it fails to convert since our character vector contains words and not numerical characters. This results explain why we cannot get the mean values.
   
-      *Regarding Factorvec, When you convert the factor vector to numeric, R will give a number for each level. For example, since "step1" is the first level, it will be converted to 1, "step2" to 2, and "step3" to 3.
-
-
-4. Does this help explain what happens when you try to take the mean?
-
-    *Yes. it explains why the Charavec and Factorvec cannot calculate the mean value. The reason is that the character vector couldn't be converted to numbers. For the factor vector (Factorvec), the conversion to numbers worked, but it returned the internal level codes (1, 2, 3), not a meaningful numerical representation of the data. 
-
+      * Regarding Factorvec, when you convert the factor vector to numeric, R will give a number for each level. For example, since "step1" is the first level, it will be converted to 1, "step2" to 2, and "step3" to 3. However, it does not explain why we cannot get the mean values in the original step since we get the number from the as.numeric step. Notably, the conversion returns the internal level codes (1, 2, 3), not a meaningful numerical representation of the data.
 
